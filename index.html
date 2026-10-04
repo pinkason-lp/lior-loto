@@ -1,14 +1,23 @@
 <!doctype html>
 <html lang="he" dir="rtl">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>לוטו בצ׳יק</title><link rel="stylesheet" href="src/style.css"></head>
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#090b10"><title>LotoChik</title>
+<link rel="stylesheet" href="src/style.css">
+</head>
 <body>
 <main class="app">
-<header class="hero"><span class="brand-mark">✦</span><p class="eyebrow">LOTTO BECHIK</p><h1>לוטו בצ׳יק</h1><p>לחיצה אחת ויש לך סט חדש של שורות לוטו מוכנות.</p></header>
-<section class="generator"><button id="generateBtn" class="generate">מלא לי טופס</button><p class="hint">כל לחיצה מייצרת סט חדש לחלוטין</p></section>
-<section id="ticket" class="ticket" aria-live="polite"></section>
+<header class="hero">
+<div class="wordmark" aria-label="LotoChik"><span>l</span><span class="logo-ball">8</span><span>tochik</span></div>
+<p class="eyebrow">LOTTOCHIK</p>
+<h1>המספרים שלך. בצ׳יק.</h1>
+<p class="lead">לחיצה אחת ומקבלים 8 שורות חדשות — 6 מספרים ומספר חזק בכל שורה.</p>
+</header>
+<section class="generator"><button id="generateBtn" class="generate">✦ מלא לי טופס</button><p class="hint">כל לחיצה מייצרת סט אקראי חדש לחלוטין</p></section>
+<section id="ticket" class="ticket" aria-live="polite"><div class="empty"><b>מוכנים?</b><span>לחץ על הכפתור והטופס שלך יופיע כאן.</span></div></section>
 <button id="copyBtn" class="copy" hidden>העתק מספרים</button>
 <p id="message" class="message" aria-live="polite"></p>
-<footer>לכיף בלבד • אין דרך להבטיח תוצאות בהגרלה אקראית</footer>
+<footer>לכיף בלבד • כל הגרלה אקראית ואין דרך להבטיח זכייה</footer>
 </main>
 <script src="src/app.js"></script>
 </body></html>
