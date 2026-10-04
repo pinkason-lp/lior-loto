@@ -8,9 +8,24 @@
 </head>
 <body>
   <main class="app">
-    <h1>Lior Loto</h1>
-    <p>הבסיס מוכן. מכאן נבנה את חוויית הלוטו.</p>
-    <button id="startBtn">מתחילים</button>
+    <header class="hero">
+      <span class="eyebrow">LIOR LOTO</span>
+      <h1>בוחרים. בודקים. מנתחים.</h1>
+      <p>בחר 6 מספרים מתוך 37. בהמשך נחבר לכאן את מנוע הניתוח ההיסטורי.</p>
+    </header>
+    <section class="panel">
+      <div class="panel-head">
+        <strong>המספרים שלך</strong>
+        <span id="counter">0 / 6</span>
+      </div>
+      <div id="numbers" class="numbers" aria-label="בחירת מספרים"></div>
+      <div id="selection" class="selection">עדיין לא נבחרו מספרים</div>
+      <div class="actions">
+        <button id="clearBtn" class="secondary" disabled>נקה</button>
+        <button id="checkBtn" disabled>בדוק בחירה</button>
+      </div>
+      <p id="message" class="message" aria-live="polite"></p>
+    </section>
   </main>
   <script src="src/app.js"></script>
 </body>
