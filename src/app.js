@@ -1,0 +1,1 @@
+document.querySelector("#startBtn").addEventListener("click",()=>{document.querySelector("#startBtn").textContent="מוכנים!";});
