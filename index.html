@@ -1,32 +1,14 @@
 <!doctype html>
 <html lang="he" dir="rtl">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Lior Loto</title>
-  <link rel="stylesheet" href="src/style.css">
-</head>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>לוטו בצ׳יק</title><link rel="stylesheet" href="src/style.css"></head>
 <body>
-  <main class="app">
-    <header class="hero">
-      <span class="eyebrow">LIOR LOTO</span>
-      <h1>בוחרים. בודקים. מנתחים.</h1>
-      <p>בחר 6 מספרים מתוך 37. בהמשך נחבר לכאן את מנוע הניתוח ההיסטורי.</p>
-    </header>
-    <section class="panel">
-      <div class="panel-head">
-        <strong>המספרים שלך</strong>
-        <span id="counter">0 / 6</span>
-      </div>
-      <div id="numbers" class="numbers" aria-label="בחירת מספרים"></div>
-      <div id="selection" class="selection">עדיין לא נבחרו מספרים</div>
-      <div class="actions">
-        <button id="clearBtn" class="secondary" disabled>נקה</button>
-        <button id="checkBtn" disabled>בדוק בחירה</button>
-      </div>
-      <p id="message" class="message" aria-live="polite"></p>
-    </section>
-  </main>
-  <script src="src/app.js"></script>
-</body>
-</html>
+<main class="app">
+<header class="hero"><span class="brand-mark">✦</span><p class="eyebrow">LOTTO BECHIK</p><h1>לוטו בצ׳יק</h1><p>לחיצה אחת ויש לך סט חדש של שורות לוטו מוכנות.</p></header>
+<section class="generator"><button id="generateBtn" class="generate">מלא לי טופס</button><p class="hint">כל לחיצה מייצרת סט חדש לחלוטין</p></section>
+<section id="ticket" class="ticket" aria-live="polite"></section>
+<button id="copyBtn" class="copy" hidden>העתק מספרים</button>
+<p id="message" class="message" aria-live="polite"></p>
+<footer>לכיף בלבד • אין דרך להבטיח תוצאות בהגרלה אקראית</footer>
+</main>
+<script src="src/app.js"></script>
+</body></html>
