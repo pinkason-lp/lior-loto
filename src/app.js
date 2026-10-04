@@ -1,46 +1,53 @@
-const numbersEl=document.querySelector("#numbers");
-const counterEl=document.querySelector("#counter");
-const selectionEl=document.querySelector("#selection");
-const clearBtn=document.querySelector("#clearBtn");
-const checkBtn=document.querySelector("#checkBtn");
+const generateBtn=document.querySelector("#generateBtn");
+const ticketEl=document.querySelector("#ticket");
+const copyBtn=document.querySelector("#copyBtn");
 const messageEl=document.querySelector("#message");
-const selected=new Set();
+const ROWS=8;
+let currentRows=[];
 
-for(let n=1;n<=37;n++){
-  const btn=document.createElement("button");
-  btn.className="number";
-  btn.type="button";
-  btn.textContent=n;
-  btn.setAttribute("aria-label",`מספר ${n}`);
-  btn.addEventListener("click",()=>toggleNumber(n,btn));
-  numbersEl.appendChild(btn);
+function randomUnique(count,max){
+  const pool=Array.from({length:max},(_,i)=>i+1);
+  for(let i=pool.length-1;i>0;i--){
+    const j=Math.floor(Math.random()*(i+1));
+    [pool[i],pool[j]]=[pool[j],pool[i]];
+  }
+  return pool.slice(0,count).sort((a,b)=>a-b);
 }
 
-function toggleNumber(n,btn){
-  messageEl.textContent="";
-  if(selected.has(n)){selected.delete(n);btn.classList.remove("selected");}
-  else if(selected.size<6){selected.add(n);btn.classList.add("selected");}
-  else{messageEl.textContent="אפשר לבחור עד 6 מספרים.";return;}
-  render();
+function makeSet(){
+  return Array.from({length:ROWS},()=>({
+    numbers:randomUnique(6,37),
+    strong:Math.floor(Math.random()*7)+1
+  }));
 }
 
 function render(){
-  const values=[...selected].sort((a,b)=>a-b);
-  counterEl.textContent=`${values.length} / 6`;
-  selectionEl.textContent=values.length?values.join("  •  "):"עדיין לא נבחרו מספרים";
-  clearBtn.disabled=values.length===0;
-  checkBtn.disabled=values.length!==6;
+  ticketEl.innerHTML="";
+  currentRows.forEach((row,index)=>{
+    const el=document.createElement("article");
+    el.className="row";
+    const balls=row.numbers.map(n=>`<span class="ball">${n}</span>`).join("");
+    el.innerHTML=`<span class="row-index">#${index+1}</span><div class="balls">${balls}</div><div class="strong"><span>חזק</span><span class="strong-ball">${row.strong}</span></div>`;
+    ticketEl.appendChild(el);
+  });
+  copyBtn.hidden=false;
 }
 
-clearBtn.addEventListener("click",()=>{
-  selected.clear();
-  document.querySelectorAll(".number.selected").forEach(el=>el.classList.remove("selected"));
-  messageEl.textContent="";
+function asText(){
+  return currentRows.map((row,i)=>`שורה ${i+1}: ${row.numbers.join(", ")} | חזק: ${row.strong}`).join("\n");
+}
+
+generateBtn.addEventListener("click",()=>{
+  currentRows=makeSet();
   render();
+  messageEl.textContent="סט חדש מוכן ✦";
 });
 
-checkBtn.addEventListener("click",()=>{
-  messageEl.textContent="הבחירה מוכנה. בשלב הבא נחבר אותה למנוע הניתוח ההיסטורי.";
+copyBtn.addEventListener("click",async()=>{
+  try{
+    await navigator.clipboard.writeText(asText());
+    messageEl.textContent="המספרים הועתקו";
+  }catch{
+    messageEl.textContent="לא הצלחתי להעתיק. נסה שוב.";
+  }
 });
-
-render();
